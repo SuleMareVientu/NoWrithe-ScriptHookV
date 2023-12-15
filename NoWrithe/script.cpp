@@ -1,7 +1,5 @@
 #include "script.h"
 
-DWORD	pedUpdateTime;
-
 void update()
 {
 	Player player = PLAYER::PLAYER_ID();
@@ -16,32 +14,25 @@ void update()
 	Ped peds[ARR_SIZE];
 	int count = worldGetAllPeds(peds, ARR_SIZE);
 
-	// set PED_FLAG_NO_WRITHE 2 times a second
-	if (pedUpdateTime + 500 < GetTickCount())
+	// set ped config flag 2 times a second
+	for (int ped = 0; ped < count; ped++)
 	{
-		pedUpdateTime = GetTickCount();
-		for (int i = 0; i < count; i++)
-		{
-			if (peds[i] != playerPed)
-			{
-				PED::SET_PED_CONFIG_FLAG(peds[i], 281, 1);
-			}
-		}
+		PED::SET_PED_CONFIG_FLAG(peds[ped], 281, 1);
 	}
 	return;
 }
 
-void main()
-{
-	while (true)
-	{
-		update();
-		WAIT(0);
-	}
-}
-
 void ScriptMain()
 {
-	srand(GetTickCount());
-	main();
+	SYSTEM::SETTIMERA(0);
+	while (true)
+	{
+		if (SYSTEM::TIMERA() > 500)
+		{
+			SYSTEM::SETTIMERA(0);
+			update();
+		}
+		WAIT(0);
+	}
+	return;
 }
