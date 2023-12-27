@@ -1,5 +1,5 @@
 # NoWrithe-ScriptHookV [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-![Screenshot](PreviewImage/NoWrithe.png?raw=true)
+![Screenshot](https://github.com/SuleMareVientu/NoWrithe-ScriptHookV/blob/images/NoWrithe.png?raw=true)
 Simple ASI Script to disable the infamous writhe animation in GTA:V using ped config flags (PED_FLAG_NO_WRITHE). 
 
 **Requires [ScriptHookV](http://www.dev-c.com/gtav/scripthookv/)**
